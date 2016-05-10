@@ -23,7 +23,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
 use Elcodi\Bundle\CoreBundle\Abstracts\AbstractElcodiBundle;
-use Elcodi\Bundle\EntityTranslatorBundle\CompilerPass\MappingCompilerPass;
+use Elcodi\Bundle\EntityTranslatorBundle\CompilerPass\TemplatingPass;
 use Elcodi\Bundle\EntityTranslatorBundle\DependencyInjection\ElcodiEntityTranslatorExtension;
 
 /**
@@ -38,7 +38,7 @@ class ElcodiEntityTranslatorBundle extends AbstractElcodiBundle implements Depen
     {
         parent::build($container);
 
-        $container->addCompilerPass(new MappingCompilerPass());
+        $container->addCompilerPass(new TemplatingPass());
     }
 
     /**

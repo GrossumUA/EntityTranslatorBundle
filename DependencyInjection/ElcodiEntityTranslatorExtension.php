@@ -87,6 +87,7 @@ class ElcodiEntityTranslatorExtension extends AbstractExtension implements Entit
             'elcodi.entity_translator_auto_translate' => $config['auto_translate'],
             'elcodi.entity_translator_language_master_locale' => $config['language']['master_locale'],
             'elcodi.entity_translator_language_fallback' => $config['language']['fallback'],
+            'elcodi.entity_translator_templating' => $config['templating'],
         ];
     }
 

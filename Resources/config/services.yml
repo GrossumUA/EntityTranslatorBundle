@@ -38,3 +38,8 @@ services:
         factory:
             - '@elcodi.entity_translator_builder'
             - compile
+
+    elcodi.admin.extension.translator:
+        class: Elcodi\Bundle\EntityTranslatorBundle\Admin\AdminExtension\TranslatorAdminExtension
+        calls:
+            - [setEntityTranslatorFormEventListener, [@elcodi.entity_translator_form_event_listener]]
