@@ -43,3 +43,10 @@ services:
         class: Elcodi\Bundle\EntityTranslatorBundle\Admin\AdminExtension\TranslatorAdminExtension
         calls:
             - [setEntityTranslatorFormEventListener, [@elcodi.entity_translator_form_event_listener]]
+
+    elcodi.form.type.translatable_field:
+        class: Elcodi\Component\EntityTranslator\Form\Type\TranslatableFieldType
+        arguments:
+            - '@elcodi.entity_translation_provider'
+        tags:
+            - { name: form.type, alias: translatable_field }
