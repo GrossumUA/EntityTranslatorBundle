@@ -1,0 +1,34 @@
+{% block elcodi_translations_widget %}
+    {{ form_errors(form) }}
+    <div class="elcodi_translations tabbable">
+        <ul class="elcodi_translationsLocales nav nav-tabs">
+            {% for translationsFields in form %}
+                {% set name   = translationsFields.vars.name %}
+                {% set locale = name|split('_')[0] %}
+
+                <li {% if app.request.locale == locale %}class="active"{% endif %}>
+                    <a href="#" data-toggle="tab" data-target=".{{ translationsFields.vars.id }}_elcodi_translationsFields-{{ name }}">
+                        {{ locale|capitalize }}
+                        {% if form.vars.default_locale == locale %}[Default]{% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <div class="elcodi_translationsFields tab-content">
+            {% for translationsFields in form %}
+                {% set name   = translationsFields.vars.name %}
+                {% set locale = name|split('_')[0] %}
+
+                <div class="{{ translationsFields.vars.id }}_elcodi_translationsFields-{{ name }} tab-pane {% if app.request.locale == locale %}active{% endif %} {% if not form.vars.valid %}sonata-ba-field-error{% endif %}">
+                    {{ form_errors(translationsFields) }}
+                    {{ form_widget(translationsFields) }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block translatable_field_widget %}
+    {{ block('elcodi_translations_widget') }}
+{% endblock %}
